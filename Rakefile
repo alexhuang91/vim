@@ -143,9 +143,14 @@ task :default do
   # TODO run gem ctags?
 
   step 'symlink'
+  sh 'rm -rf ~/.vim'       if File.exists?(File.expand_path('~/.vimrc'))
   link_file 'vim'       , '~/.vim'
+  sh 'rm -f ~/.tmux.conf'  if File.exists?(File.expand_path('~/.tmux.conf'))
   link_file 'tmux.conf' , '~/.tmux.conf'
+  sh 'rm -f ~/.vimrc'      if File.exists?(File.expand_path('~/.vimrc'))
   link_file 'vimrc'     , '~/.vimrc'
+  sh 'rm -f ~/.bash_alias' if File.exists?(File.expand_path('~/.bash_alias'))
+  link_file 'bash_alias', '~/.bash_alias'
   unless File.exist?(File.expand_path('~/.vimrc.local'))
     cp File.expand_path('vimrc.local'), File.expand_path('~/.vimrc.local'), :verbose => true
   end

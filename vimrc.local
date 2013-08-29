@@ -8,6 +8,7 @@ if (&t_Co == 256 || has('gui_running'))
   if ($TERM_PROGRAM == 'iTerm.app')
     colorscheme solarized
   else
-    colorscheme desert
+    let g:solarized_termcolors=256
+    colorscheme solarized
   endif
 endif
